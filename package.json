@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/henryxiang/react-router-demo#readme",
   "dependencies": {
+    "eslint": "^3.2.2",
+    "eslint-plugin-react": "^6.0.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-router": "^2.6.1"
@@ -26,6 +28,7 @@
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.13.0",
     "babel-preset-react": "^6.11.1",
+    "eslint-plugin-react": "^6.0.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   }
