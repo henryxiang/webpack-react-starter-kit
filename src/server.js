@@ -1,4 +1,5 @@
 import express from 'express';
+import livereload from 'express-livereload';
 import React from 'react';
 import {renderToString} from 'react-dom/server';
 import App from './App';
@@ -49,3 +50,4 @@ app.listen(port, function(){
   console.log(`Listening on port ${port}`);
 });
 
+livereload(app, {watchDir: __dirname});

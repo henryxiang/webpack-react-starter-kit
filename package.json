@@ -17,10 +17,8 @@
   },
   "homepage": "https://github.com/henryxiang/react-router-demo#readme",
   "dependencies": {
-    "express": "^4.14.0",
     "react": "^15.3.0",
-    "react-dom": "^15.3.0",
-    "react-router": "^2.6.1"
+    "react-dom": "^15.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.13.0",
@@ -29,7 +27,11 @@
     "babel-preset-react": "^6.11.1",
     "eslint": "^3.2.2",
     "eslint-plugin-react": "^6.0.0",
+    "express": "^4.14.0",
+    "express-livereload": "0.0.24",
     "nodemon": "^1.10.0",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.12.2"
   }
 }
