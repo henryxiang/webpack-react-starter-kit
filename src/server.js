@@ -1,34 +1,40 @@
-import express from 'express';
-import livereload from 'express-livereload';
-import React from 'react';
-import {renderToString} from 'react-dom/server';
-import App from './App';
+#!/usr/bin/env node
 
-const port = '8000'
-const app = express();
+var express = require('express');
+var livereload = require('express-livereload');
+// import React from 'react';
+// import {renderToString} from 'react-dom/server';
+// import App from './App';
 
-const renderHtmlPage = (title, content) => {
-  return `
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <title>${title}</title>
-    </head>
-    <body>
-      ${content}
-    </body>
-  </html>
-  `
-}
+var port = '8000';
+var app = express();
+var docRoot = __dirname + '/../build';
 
-app.get('/', (req, res) => {
-  const title = "Webpack+React";
-  const content = renderToString(<App />);
-  const page = renderHtmlPage("Webpack+React", content);
+console.log(`Document Root: ${docRoot}`);
+app.use(express.static(docRoot));
 
-  res.status(200).send(page);
-});
+// const renderHtmlPage = (title, content) => {
+//   return `
+//   <!DOCTYPE html>
+//   <html lang="en">
+//     <head>
+//       <meta charset="UTF-8" />
+//       <title>${title}</title>
+//     </head>
+//     <body>
+//       ${content}
+//     </body>
+//   </html>
+//   `
+// }
+
+// app.get('/', (req, res) => {
+//   const title = "Webpack+React";
+//   const content = renderToString(<App />);
+//   const page = renderHtmlPage("Webpack+React", content);
+
+//   res.status(200).send(page);
+// });
 
 // handling 404 pages
 app.get('*', function(req, res) {
@@ -46,8 +52,13 @@ process.on('uncaughtException', evt => {
   console.log('uncaughtException: ', evt);
 });
 
+// app.get("/", (req, res) => {
+//   res.status(200).send("OK");
+// });
+
 app.listen(port, function(){
-  console.log(`Listening on port ${port}`);
+  var timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] Listening on port ${port}`);
 });
 
-livereload(app, {watchDir: __dirname});
+livereload(app, {watchDir: docRoot});

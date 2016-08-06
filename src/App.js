@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
+import {Router, Route, browserHistory, hashHistory} from 'react-router';
+import Home from './component/Home';
 import Test from './component/Test';
 
 class App extends Component {
   render() {
     return ( 
-      <div>
-        <h1> Webpack + React Starter Kit</h1>
-        <Test />
-        {new Date().toISOString()}
-      </div>
+      <Test />
     );
   }
 }
