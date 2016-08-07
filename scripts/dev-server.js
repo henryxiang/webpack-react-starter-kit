@@ -1,61 +1,49 @@
-import express from 'express';
-import livereload from 'express-livereload';
-import React from 'react';
-import {renderToString} from 'react-dom/server';
-import App from '../src/App';
+#!/usr/bin/env node
 
-const port = '8000'
-const app = express();
-// const webpack = require('webpack');
-// const webpackDevMiddleware = require('webpack-dev-middleware');
-// const webpackHotMiddleware = require('webpack-hot-middleware');
-// const config = require('../webpack.config');
-// const compiler = webpack(config);
+var async = require('async');
+var path = require('path')
+var base = path.join(__dirname, "..");
 
-// app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
-// app.use(webpackHotMiddleware(compiler));
+var runWatcher = function() {
+  var webpackConfig = path.join(base, 'webpack.config.js');
+  var webpack = require('webpack');
+  var conf = require(webpackConfig);
+  var compiler = webpack(conf);
+  console.log("Starting Webpack watcher");
+  compiler.watch(
+    {
+      aggregateTimeout: 300, // wait so long for more changes
+      poll: true
+    },
+    function(err, stats) {
+      if(err) {
+        console.log(err);
+        return;
+      }
+      console.log(stats.toString("normal"));
+    }
+  )
+};
 
-const renderHtmlPage = (title, content) => {
-  return `
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <title>${title}</title>
-    </head>
-    <body>
-      ${content}
-    </body>
-  </html>
-  `
-}
+var runServer = function() {
+  var nodemon = require('nodemon');
+  var server = path.join(base, 'src', 'server.js');
 
-app.get('/', (req, res) => {
-  const title = "Webpack+React";
-  const content = renderToString(<App />);
-  const page = renderHtmlPage("Webpack+React", content);
+  nodemon({
+    script: server,
+    watch: [server]
+  });
 
-  res.status(200).send(page);
-});
+  nodemon.on('start', function () {
+    console.log('Starting server');
+  }).on('quit', function () {
+    console.log('Shutting down server');
+  }).on('restart', function (files) {
+    console.log('Restarting server due to changes: ', files);
+  });
+};
 
-// handling 404 pages
-app.get('*', function(req, res) {
-  res.status(404).send('Server.js > 404 - Page Not Found');
-});
-
-// global error catcher, need four arguments
-app.use((err, req, res, next) => {
-  console.error("Error on request %s %s", req.method, req.url);
-  console.error(err.stack);
-  res.status(500).send("Server error");
-});
-
-process.on('uncaughtException', evt => {
-  console.log('uncaughtException: ', evt);
-});
-
-app.listen(port, function(){
-  console.log(`Listening on port ${port}`);
-});
-
-// livereload(app, {watchDir: __dirname + '/src'});
+async.parallel([
+  runServer, 
+  function() { setTimeout(runWatcher, 2000); }
+]);

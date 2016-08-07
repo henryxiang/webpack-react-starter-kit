@@ -54,41 +54,19 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reactRouter = __webpack_require__(175);
+	var _RouterApp = __webpack_require__(244);
 
-	var _App = __webpack_require__(238);
-
-	var _App2 = _interopRequireDefault(_App);
-
-	var _About = __webpack_require__(239);
-
-	var _About2 = _interopRequireDefault(_About);
-
-	var _Contact = __webpack_require__(240);
-
-	var _Contact2 = _interopRequireDefault(_Contact);
-
-	var _Home = __webpack_require__(241);
-
-	var _Home2 = _interopRequireDefault(_Home);
+	var _RouterApp2 = _interopRequireDefault(_RouterApp);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// ReactDom.render(<App />, document.getElementById("app"))
+	// import app from './CounterApp';
 
-	var routes = _react2.default.createElement(
-	  _reactRouter.Router,
-	  { history: _reactRouter.hashHistory },
-	  _react2.default.createElement(
-	    _reactRouter.Route,
-	    { path: "/", component: _App2.default },
-	    _react2.default.createElement(_reactRouter.Route, { path: "/home", component: _Home2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: "/about", component: _About2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: "/contact", component: _Contact2.default })
-	  )
-	);
 
-	_reactDom2.default.render(routes, document.getElementById("app"));
+	_reactDom2.default.render(_RouterApp2.default, document.getElementById("app"));
+
+	// import TestApp from './TestApp'
+	// const app = <TestApp />
 
 /***/ },
 /* 1 */
@@ -27087,7 +27065,61 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 238 */
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(175);
+
+	var _Index = __webpack_require__(245);
+
+	var _Index2 = _interopRequireDefault(_Index);
+
+	var _About = __webpack_require__(246);
+
+	var _About2 = _interopRequireDefault(_About);
+
+	var _Contact = __webpack_require__(247);
+
+	var _Contact2 = _interopRequireDefault(_Contact);
+
+	var _Home = __webpack_require__(248);
+
+	var _Home2 = _interopRequireDefault(_Home);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var router = _react2.default.createElement(
+	  _reactRouter.Router,
+	  { history: _reactRouter.hashHistory },
+	  _react2.default.createElement(
+	    _reactRouter.Route,
+	    { path: '/', component: _Index2.default },
+	    _react2.default.createElement(_reactRouter.Route, { path: '/home', component: _Home2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/contact', component: _Contact2.default })
+	  )
+	);
+
+	exports.default = router;
+
+/***/ },
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27129,16 +27161,16 @@
 	  }
 	};
 
-	var App = function (_Component) {
-	  _inherits(App, _Component);
+	var Index = function (_Component) {
+	  _inherits(Index, _Component);
 
-	  function App() {
-	    _classCallCheck(this, App);
+	  function Index() {
+	    _classCallCheck(this, Index);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Index).apply(this, arguments));
 	  }
 
-	  _createClass(App, [{
+	  _createClass(Index, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -27189,13 +27221,13 @@
 	    }
 	  }]);
 
-	  return App;
+	  return Index;
 	}(_react.Component);
 
-	exports.default = App;
+	exports.default = Index;
 
 /***/ },
-/* 239 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27203,6 +27235,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.default = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -27251,7 +27284,7 @@
 	exports.default = About;
 
 /***/ },
-/* 240 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27259,6 +27292,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.default = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -27307,7 +27341,7 @@
 	exports.default = Contact;
 
 /***/ },
-/* 241 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27315,6 +27349,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.default = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 

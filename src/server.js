@@ -2,9 +2,6 @@
 
 var express = require('express');
 var livereload = require('express-livereload');
-// import React from 'react';
-// import {renderToString} from 'react-dom/server';
-// import App from './App';
 
 var port = '8000';
 var app = express();
@@ -12,29 +9,6 @@ var docRoot = __dirname + '/../build';
 
 console.log(`Document Root: ${docRoot}`);
 app.use(express.static(docRoot));
-
-// const renderHtmlPage = (title, content) => {
-//   return `
-//   <!DOCTYPE html>
-//   <html lang="en">
-//     <head>
-//       <meta charset="UTF-8" />
-//       <title>${title}</title>
-//     </head>
-//     <body>
-//       ${content}
-//     </body>
-//   </html>
-//   `
-// }
-
-// app.get('/', (req, res) => {
-//   const title = "Webpack+React";
-//   const content = renderToString(<App />);
-//   const page = renderHtmlPage("Webpack+React", content);
-
-//   res.status(200).send(page);
-// });
 
 // handling 404 pages
 app.get('*', function(req, res) {
