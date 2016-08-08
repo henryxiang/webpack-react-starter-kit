@@ -15,6 +15,9 @@ const styles = {
     color: "#000",
     padding: "8px 16px",
     textDecoration: "none"
+  },
+  active: {
+    color: "blue"
   }
 }
 
@@ -24,9 +27,9 @@ class Index extends Component {
       <div>
         <h1><Link style={styles.link} to="/">App</Link></h1>
         <ul style={styles.ul}>
-          <li style={styles.li}><Link style={styles.link} to="/home">Home</Link></li>
-          <li style={styles.li}><Link style={styles.link} to="/contact">Contact</Link></li>
-          <li style={styles.li}><Link style={styles.link} to="/about">About</Link></li>
+          <li style={styles.li}><Link activeStyle={styles.active} style={styles.link} to="/home">Home</Link></li>
+          <li style={styles.li}><Link activeStyle={styles.active} style={styles.link} to="/contact">Contact</Link></li>
+          <li style={styles.li}><Link activeStyle={styles.active} style={styles.link} to="/about">About</Link></li>
         </ul>
         {this.props.children}
       </div>
