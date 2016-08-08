@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   // devtool: 'eval',
@@ -34,6 +35,11 @@ module.exports = {
   //     __SERVER__: JSON.stringify(false),
   //   }),
   // ],
+  plugins: [
+    new CopyWebpackPlugin([
+      {from: 'src/asset/index.html'}
+    ]) 
+  ],
   resolve: {
     extensions: ['', '.js', '.jsx']
   }
