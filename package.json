@@ -8,15 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/henryxiang/react-router-demo.git"
+    "url": "git+https://github.com/henryxiang/webpack-react-starter-kit.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/henryxiang/react-router-demo/issues"
+    "url": "https://github.com/henryxiang/webpack-react-starter-kit/issues"
   },
-  "homepage": "https://github.com/henryxiang/react-router-demo#readme",
+  "homepage": "https://github.com/henryxiang/webpack-react-starter-kit#readme",
   "dependencies": {
+    "es6-promise": "^3.2.1",
+    "isomorphic-fetch": "^2.2.1",
     "mobx": "^2.4.2",
     "mobx-react": "^3.5.4",
     "radium": "^0.18.1",

@@ -11,7 +11,7 @@ Webpack+React Starter Kit
 * model/ - the directory to store application domain models
 
 
-### Start up devel/test [server](http://localhost:8000)
+### Start up devel/test server [http://localhost:8000](http://localhost:8000)
 
 ```bash
 npm install (only need to run once)
