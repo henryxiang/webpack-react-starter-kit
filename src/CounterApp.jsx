@@ -1,17 +1,30 @@
-import React from 'react';
-import Counter from './component/Counter';
-import CounterModel from './model/CounterModel';
+import React, {Component} from 'react';
+import CounterView from './component/CounterView';
+import Counter from './model/Counter';
+import CounterList from './model/CounterList';
+import {observer} from 'mobx-react';
 
-const counter1 = new CounterModel();
-const counter2 = new CounterModel();
-const counter3 = new CounterModel();
+const counterList = new CounterList();
 
-const app = (
-  <div>
-    <Counter counter={counter1} />
-    <Counter counter={counter2} />
-    <Counter counter={counter3} />
-  </div>
-);
+@observer
+class CounterApp extends Component {
+  render() {
+    return (
+      <div>
+        <button onClick={counterList.addCounter}>Add Counter</button>
+        {
+          counterList.counters.map((counter, index) => {
+            return (
+              <div key={index}>
+                <CounterView model={counter} />
+                <button onClick={counterList.removeCounter.bind(counterList, index)}>X</button>
+              </div>
+            )
+          }) 
+        }
+      </div>
+    );
+  }
+}
 
-export default app;
+export default CounterApp;

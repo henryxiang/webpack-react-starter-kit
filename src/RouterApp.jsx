@@ -4,6 +4,8 @@ import Index from "./component/Index";
 import About from "./component/About";
 import Contact from "./component/Contact";
 import Home from "./component/Home";
+import CounterApp from "./CounterApp";
+
 
 const router = (
   <Router history={hashHistory}>
@@ -11,6 +13,7 @@ const router = (
       <Route path="/home" component={Home}/>
       <Route path="/about" component={About}/>
       <Route path="/contact" component={Contact}/>
+      <Route path="/counter" component={CounterApp}/>
     </Route>
   </Router>
 );

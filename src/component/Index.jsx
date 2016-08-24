@@ -30,6 +30,7 @@ class Index extends Component {
           <li style={styles.li}><Link activeStyle={styles.active} style={styles.link} to="/home">Home</Link></li>
           <li style={styles.li}><Link activeStyle={styles.active} style={styles.link} to="/contact">Contact</Link></li>
           <li style={styles.li}><Link activeStyle={styles.active} style={styles.link} to="/about">About</Link></li>
+          <li style={styles.li}><Link activeStyle={styles.active} style={styles.link} to="/counter">Counter App</Link></li>
         </ul>
         {this.props.children}
       </div>
