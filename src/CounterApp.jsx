@@ -1,27 +1,29 @@
 import React, {Component} from 'react';
 import CounterView from './component/CounterView';
 import Counter from './model/Counter';
-import CounterList from './model/CounterList';
+import ObservableList from './model/ObservableList';
 import {observer} from 'mobx-react';
 
-const counterList = new CounterList();
+const counterList = new ObservableList();
 
 @observer
 class CounterApp extends Component {
   render() {
     return (
       <div>
-        <button onClick={counterList.addCounter}>Add Counter</button>
+        <button onClick={counterList.addItem.bind(counterList, new Counter())}>Add Counter</button>
         {
-          counterList.counters.map((counter, index) => {
+          counterList.items.map((counter, index) => {
             return (
               <div key={index}>
                 <CounterView model={counter} />
-                <button onClick={counterList.removeCounter.bind(counterList, index)}>X</button>
+                <button onClick={counterList.removeItem.bind(counterList, index)}>X</button>
               </div>
             )
           }) 
         }
+        <div>Counters: {counterList.size}</div>
+        <div>Total: {counterList.items.reduce((pre, cur) => pre+cur.count, 0)}</div>
       </div>
     );
   }

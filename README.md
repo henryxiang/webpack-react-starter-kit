@@ -1,19 +1,19 @@
-## Webpack+React Starter Kit
+Webpack+React Starter Kit
+-------------------------
 
-### Bootstrap React development environment
+### The src/ directory
 
-```bash
-./script/setup-dev-env.sh
-```
-
-### Files in src/ directory
-
-* index.html - main app template
-* App.js - main app component
 * main.js - app entry point
+* server.js - development server that renders static pages and mocks API
+* Router.js - a react-router component that links other app components
+* asset/ - the directory to store static files such as HTML, CSS, fonts, and etc.
+* component/ - the directory to store React components
+* model/ - the directory to store application domain models
+
 
 ### Start up devel/test [server](http://localhost:8000)
 
 ```bash
+npm install (only need to run once)
 npm start
 ```
