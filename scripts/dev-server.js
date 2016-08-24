@@ -1,15 +1,24 @@
 #!/usr/bin/env node
 
 var async = require('async');
-var path = require('path')
+var path = require('path');
+
+/* Project root directory */
 var base = path.join(__dirname, "..");
 
+/* A help function to print formatted current timestamp */
+var timestamp = function() {
+  var ts = new Date().toISOString();
+  return "[" + ts + "]";
+}
+
+/* Run Webpack in watch mode */
 var runWatcher = function() {
-  var webpackConfig = path.join(base, 'webpack.config.js');
   var webpack = require('webpack');
-  var conf = require(webpackConfig);
+  var conf = require(base + '/webpack.config');
   var compiler = webpack(conf);
-  console.log("Starting Webpack watcher");
+
+  console.log(timestamp(), "Starting Webpack watcher");
   compiler.watch(
     {
       aggregateTimeout: 300, // wait so long for more changes
@@ -25,24 +34,27 @@ var runWatcher = function() {
   )
 };
 
+/* Run development HTTP server */
 var runServer = function() {
   var nodemon = require('nodemon');
-  var server = path.join(base, 'src', 'server.js');
+  var serverStarter = path.join(base, 'src', 'server-starter.js');
+  var httpServer = path.join(base, 'src', 'httpServer.js');
 
   nodemon({
-    script: server,
-    watch: [server]
+    script: serverStarter,
+    watch: [serverStarter, httpServer]
   });
 
   nodemon.on('start', function () {
-    console.log('Starting server');
+    console.log(timestamp(), 'Starting server');
   }).on('quit', function () {
-    console.log('Shutting down server');
+    console.log(timestamp(), 'Shutting down server');
   }).on('restart', function (files) {
-    console.log('Restarting server due to changes: ', files);
+    console.log(timestamp(), 'Restarting server due to changes: ', files);
   });
 };
 
+/* Start HTTP server and Webpack watcher in parallel */
 async.parallel([
   runServer, 
   function() { setTimeout(runWatcher, 2000); }

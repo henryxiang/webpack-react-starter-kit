@@ -3,14 +3,19 @@
 var async = require('async');
 var path = require('path');
 
+/* Project root directory */
+var base = path.join(__dirname, ".");
+
+/* A help function to print formatted current timestamp */
 var timestamp = function() {
   var ts = new Date().toISOString();
   return "[" + ts + "]";
 }
 
+/* Run Webpack in watch mode */
 var runWatcher = function() {
   var webpack = require('webpack');
-  var conf = require('./webpack.config');
+  var conf = require(base + '/webpack.config');
   var compiler = webpack(conf);
 
   console.log(timestamp(), "Starting Webpack watcher");
@@ -29,10 +34,11 @@ var runWatcher = function() {
   )
 };
 
+/* Run development HTTP server */
 var runServer = function() {
   var nodemon = require('nodemon');
-  var serverStarter = path.join(__dirname, 'src', 'server-starter.js');
-  var httpServer = path.join(__dirname, 'src', 'httpServer.js');
+  var serverStarter = path.join(base, 'src', 'server-starter.js');
+  var httpServer = path.join(base, 'src', 'httpServer.js');
 
   nodemon({
     script: serverStarter,
@@ -48,6 +54,7 @@ var runServer = function() {
   });
 };
 
+/* Start HTTP server and Webpack watcher in parallel */
 async.parallel([
   runServer, 
   function() { setTimeout(runWatcher, 2000); }
