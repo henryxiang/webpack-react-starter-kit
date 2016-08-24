@@ -1,13 +1,19 @@
 #!/usr/bin/env node
 
 var async = require('async');
-var path = require('path')
+var path = require('path');
+
+var timestamp = function() {
+  var ts = new Date().toISOString();
+  return "[" + ts + "]";
+}
 
 var runWatcher = function() {
   var webpack = require('webpack');
   var conf = require('./webpack.config');
   var compiler = webpack(conf);
-  console.log("Starting Webpack watcher");
+
+  console.log(timestamp(), "Starting Webpack watcher");
   compiler.watch(
     {
       aggregateTimeout: 300, // wait so long for more changes
@@ -25,19 +31,20 @@ var runWatcher = function() {
 
 var runServer = function() {
   var nodemon = require('nodemon');
-  var server = path.join(__dirname, 'src', 'server.js');
+  var serverStarter = path.join(__dirname, 'src', 'server-starter.js');
+  var httpServer = path.join(__dirname, 'src', 'httpServer.js');
 
   nodemon({
-    script: server,
-    watch: [server]
+    script: serverStarter,
+    watch: [serverStarter, httpServer]
   });
 
   nodemon.on('start', function () {
-    console.log('Starting server');
+    console.log(timestamp(), 'Starting server');
   }).on('quit', function () {
-    console.log('Shutting down server');
+    console.log(timestamp(), 'Shutting down server');
   }).on('restart', function (files) {
-    console.log('Restarting server due to changes: ', files);
+    console.log(timestamp(), 'Restarting server due to changes: ', files);
   });
 };
 

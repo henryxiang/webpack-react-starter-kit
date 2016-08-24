@@ -1,11 +1,9 @@
-#!/usr/bin/env node
+import express from'express';
+import livereload from'express-livereload';
 
-var express = require('express');
-var livereload = require('express-livereload');
-
-var port = '8000';
-var app = express();
-var docRoot = __dirname + '/../build';
+const port = '8000';
+const app = express();
+const docRoot = __dirname + '/../build';
 
 console.log(`Document Root: ${docRoot}`);
 app.use(express.static(docRoot));
@@ -31,7 +29,7 @@ process.on('uncaughtException', evt => {
 // });
 
 app.listen(port, function(){
-  var timestamp = new Date().toISOString();
+  let timestamp = new Date().toISOString();
   console.log(`[${timestamp}] Listening on port ${port}`);
 });
 
