@@ -25,11 +25,10 @@ class Index extends Component {
   render() {
     return ( 
       <div>
-        <h1><Link style={styles.link} to="/">App</Link></h1>
+        <h1><Link style={styles.link} to="/">App Store</Link></h1>
         <ul style={styles.ul}>
           <li style={styles.li}><Link activeStyle={styles.active} style={styles.link} to="/home">Home</Link></li>
           <li style={styles.li}><Link activeStyle={styles.active} style={styles.link} to="/contact">Contact</Link></li>
-          <li style={styles.li}><Link activeStyle={styles.active} style={styles.link} to="/about">About</Link></li>
           <li style={styles.li}><Link activeStyle={styles.active} style={styles.link} to="/counter">Counter App</Link></li>
         </ul>
         {this.props.children}
