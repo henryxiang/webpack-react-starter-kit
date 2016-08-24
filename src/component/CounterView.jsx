@@ -8,7 +8,7 @@ class CounterView extends Component {
     return (
       <span>
         <button onClick={model.increment}>+</button>
-        {model.count}
+        {" " + model.count + " "}
         <button onClick={model.decrement}>-</button>
       </span>
     );
