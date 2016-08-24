@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- *  This is an ES5 JavaScript to load ES6 modules using babel-loader
+ *  This is an ES5 JavaScript to load ES6 modules using babel-register
  */
 
 global.__CLIENT__ = false;
