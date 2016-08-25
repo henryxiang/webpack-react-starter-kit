@@ -18,3 +18,10 @@ Webpack+React Starter Kit
 npm install (only need to run once)
 npm start
 ```
+
+### Building project for production deployment
+
+```bash
+npm run build
+```
+The built artifacts will be put into build/ directory and they can be deployed to production server.
