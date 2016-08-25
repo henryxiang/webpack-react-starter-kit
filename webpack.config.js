@@ -15,11 +15,10 @@ module.exports = {
     publicPath: '/static/'
   },
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader'
-    }]
+    loaders: [
+      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
+      { test: /\.css$/, loader: "style-loader!css-loader" }
+    ]
   },
   // devServer: {
   //   inline: true,
