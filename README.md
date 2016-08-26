@@ -14,6 +14,13 @@ The starter kit needs the following programs installed on your computer:
 * npm (normally bundled with Node.js)
 * [Git](https://git-scm.com/downloads)
 
+To verify you have all the prerequisites correctly installed, run the following commands:
+```bash
+node -v
+npm -v
+git --version
+```
+
 
 ### Configuration files
 
@@ -47,19 +54,3 @@ npm start
 npm run build
 ```
 The built artifacts will be put into build/ directory and they can be deployed to production server.
-
-
-### Special note for Windows users
-
-In some working places, Windows users don't Administator privilege and cannot install node.js by themselves. This starter kit contains standalone node.js and npm x86 executables in win-x86/ directory. Run the following command first to set up the environment:
-
-```dos
-win-x86\set-env.bat
-```
-
-After that, you should be able to run npm and node as usual:
-
-```dos
-npm -v
-node -v
-```

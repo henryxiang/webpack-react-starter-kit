@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class TodoFooter extends Component {
+class TodoFooter extends Component {
   render() {
     return (
       <div className="footer">
@@ -21,3 +21,5 @@ export default class TodoFooter extends Component {
     );
   }
 }
+
+export default TodoFooter
