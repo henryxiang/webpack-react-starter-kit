@@ -3,7 +3,16 @@ Webpack+React Starter Kit
 
 ### Introduction
 
-This is a starter kit used for front-end application development using React.js and other related JavaScript libraries. The starter kit contains Webpack Module Bundler and Babel compiler for next generation JavaScript. It is also pre-packaged with "React-friendly" modules such as React-Router, Mobx-React, and Express.js. The starter kit is written in pure JavaScript and is supposed to run in Linux/Unix, MacOS, or Windows environment as long as node.js and npm is installed. For Windows users who cannot install node.js, please see the special note below.
+This is a starter kit used for front-end application development using React.js and other related JavaScript libraries. The starter kit contains Webpack Module Bundler and Babel compiler for next generation JavaScript. It is also pre-packaged with "React-friendly" modules such as React-Router, Mobx-React, and Express.js. 
+
+
+### Prerequisites
+
+The starter kit needs the following programs installed on your computer:
+
+* [Node.js](https://nodejs.org/en/download/)
+* npm (normally bundled with Node.js)
+* [Git](https://git-scm.com/downloads)
 
 
 ### Configuration files
