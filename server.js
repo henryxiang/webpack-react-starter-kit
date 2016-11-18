@@ -49,6 +49,7 @@ var runServer = function() {
     console.log(timestamp(), 'Starting server');
   }).on('quit', function () {
     console.log(timestamp(), 'Shutting down server');
+    process.exit();
   }).on('restart', function (files) {
     console.log(timestamp(), 'Restarting server due to changes: ', files);
   });
